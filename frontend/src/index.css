@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Zenith Cosmic Design System - Deep Space Theme */
+
+@layer base {
+  :root {
+    /* Deep Space Background with Galaxy */
+    --background: 230 35% 8%;
+    --foreground: 300 20% 95%;
+
+    /* Cosmic Cards & Panels - Enhanced with galaxy glow */
+    --card: 240 25% 12%;
+    --card-foreground: 300 15% 92%;
+
+    /* Holographic Elements - Brighter cosmic blue */
+    --popover: 240 30% 15%;
+    --popover-foreground: 300 15% 92%;
+
+    /* Stellar Primary - Bright Cosmic Blue */
+    --primary: 195 100% 65%;
+    --primary-foreground: 230 35% 8%;
+
+    /* Cosmic Secondary - Vibrant Purple Nebula */
+    --secondary: 285 85% 55%;
+    --secondary-foreground: 300 20% 95%;
+
+    /* Starlight Accents - Enhanced contrast */
+    --muted: 240 20% 18%;
+    --muted-foreground: 240 15% 70%;
+
+    /* Energy Pulse Accent - Bright Cyan */
+    --accent: 175 100% 60%;
+    --accent-foreground: 230 35% 8%;
+
+    /* Warning Red Giant - More vibrant */
+    --destructive: 0 85% 58%;
+    --destructive-foreground: 300 20% 95%;
+
+    /* Cosmic Borders & Inputs - More defined */
+    --border: 240 25% 25%;
+    --input: 240 30% 15%;
+    --ring: 195 100% 65%;
+
+    --radius: 0.5rem;
+
+    /* Enhanced Cosmic Effects */
+    --stellar-glow: 0 0 40px hsla(195, 100%, 65%, 0.6), 0 0 80px hsla(195, 100%, 65%, 0.3);
+    --nebula-glow: 0 0 30px hsla(285, 85%, 55%, 0.5), 0 0 60px hsla(285, 85%, 55%, 0.2);
+    --energy-pulse: 0 0 25px hsla(175, 100%, 60%, 0.6), 0 0 50px hsla(175, 100%, 60%, 0.3);
+    --danger-glow: 0 0 35px hsla(0, 85%, 58%, 0.5), 0 0 70px hsla(0, 85%, 58%, 0.2);
+    --galaxy-glow: 0 0 100px hsla(285, 85%, 55%, 0.1), inset 0 0 100px hsla(195, 100%, 65%, 0.05);
+    
+    /* Enhanced Animation Durations */
+    --transition-cosmic: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-stellar: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+
+    /* Sidebar (kept for compatibility) */
+    --sidebar-background: 220 40% 8%;
+    --sidebar-foreground: 220 30% 95%;
+    --sidebar-primary: 210 100% 60%;
+    --sidebar-primary-foreground: 220 50% 5%;
+    --sidebar-accent: 220 30% 15%;
+    --sidebar-accent-foreground: 220 30% 95%;
+    --sidebar-border: 220 30% 20%;
+    --sidebar-ring: 210 100% 60%;
+  }
+
+  .dark {
+    /* Enhanced cosmic dark theme with galaxy backdrop */
+    --background: 230 40% 4%;
+    --foreground: 300 25% 98%;
+    --card: 220 40% 6%;
+    --card-foreground: 220 30% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-image: url('/milky-way-galaxy.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Enhanced Cosmic Button Variants */
+  .btn-stellar {
+    @apply relative px-8 py-4 rounded-xl font-semibold transition-all duration-700;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)));
+    background-size: 200% 200%;
+    color: hsl(var(--primary-foreground));
+    box-shadow: var(--stellar-glow);
+    border: 2px solid hsla(195, 100%, 65%, 0.4);
+    animation: gradient-shift 3s ease infinite;
+  }
+  
+  .btn-stellar:hover {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: var(--stellar-glow), 0 15px 40px hsla(195, 100%, 65%, 0.3);
+    border-color: hsla(195, 100%, 65%, 0.8);
+  }
+  
+  .btn-nebula {
+    @apply relative px-8 py-4 rounded-xl font-semibold transition-all duration-700;
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--destructive)), hsl(var(--secondary)));
+    background-size: 200% 200%;
+    color: hsl(var(--secondary-foreground));
+    box-shadow: var(--nebula-glow);
+    border: 2px solid hsla(285, 85%, 55%, 0.4);
+    animation: gradient-shift 4s ease infinite;
+  }
+  
+  .btn-nebula:hover {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: var(--nebula-glow), 0 15px 40px hsla(285, 85%, 55%, 0.3);
+    border-color: hsla(285, 85%, 55%, 0.8);
+  }
+
+  /* Enhanced Cosmic Input Fields */
+  .input-cosmic {
+    @apply w-full px-6 py-4 rounded-xl border-2 transition-all duration-500;
+    background: hsla(240, 30%, 15%, 0.9);
+    border-color: hsl(var(--border));
+    color: hsl(var(--foreground));
+    backdrop-filter: blur(20px);
+    box-shadow: var(--galaxy-glow);
+  }
+  
+  .input-cosmic:focus {
+    outline: none;
+    border-color: hsl(var(--primary));
+    box-shadow: var(--stellar-glow), var(--galaxy-glow);
+    transform: scale(1.02);
+  }
+
+  /* Enhanced Glowing Text Effects */
+  .text-stellar {
+    color: hsl(var(--primary));
+    text-shadow: 0 0 20px hsla(195, 100%, 65%, 0.8), 0 0 40px hsla(195, 100%, 65%, 0.4);
+    animation: text-glow 2s ease-in-out infinite alternate;
+  }
+  
+  .text-nebula {
+    color: hsl(var(--secondary));
+    text-shadow: 0 0 20px hsla(285, 85%, 55%, 0.8), 0 0 40px hsla(285, 85%, 55%, 0.4);
+    animation: text-glow 3s ease-in-out infinite alternate;
+  }
+
+  /* Enhanced Particle Animations */
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  @keyframes text-glow {
+    0% { text-shadow: 0 0 20px currentColor, 0 0 40px currentColor; }
+    100% { text-shadow: 0 0 30px currentColor, 0 0 60px currentColor, 0 0 80px currentColor; }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(180deg); }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: var(--stellar-glow); }
+    50% { box-shadow: var(--stellar-glow), 0 0 60px hsla(195, 100%, 65%, 0.6); }
+  }
+  
+  @keyframes nebula-drift {
+    0% { transform: translateX(0px) translateY(0px) scale(1); }
+    25% { transform: translateX(15px) translateY(-8px) scale(1.02); }
+    50% { transform: translateX(-8px) translateY(-15px) scale(0.98); }
+    75% { transform: translateX(-15px) translateY(8px) scale(1.02); }
+    100% { transform: translateX(0px) translateY(0px) scale(1); }
+  }
+  
+  @keyframes cosmic-rotate {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .animate-nebula-drift {
+    animation: nebula-drift 12s ease-in-out infinite;
+  }
+  
+  .animate-cosmic-rotate {
+    animation: cosmic-rotate 20s linear infinite;
+  }
+}
